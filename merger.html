@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merger web page</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+
+        .flex-container > div {
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+        
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<h3>Sony Valeti builds a merger</h3>
+
+<input type="text" id="inputText">
+<br>
+<br>
+<div class="flex-container" id="target">
+    <div class="merger">row item 1</div>
+    <div class="merger">row item 2</div>
+    <div class="merger">row item 3</div>
+</div>
+
+<p>Press the button to create a new element of type div and then add it to the container.</p>
+<button onclick="makeNewDiv()">Add end</button>
+<button onclick="addFront()">Add front</button>
+<button onclick="remove()">Remove</button>
+
+
+<script>
+    function makeNewDiv() {
+        let element = document.createElement("div")
+        element.innerHTML = document.getElementById("inputText").value;
+        element.style.color = "orange"
+        element.className = "merger";
+
+        
+        let container = document.getElementById('target')
+        container.appendChild(element)
+    }
+
+    function addFront() {
+        let element = document.createElement("div");
+        element.innerHTML = document.getElementById("inputText").value;
+        element.style.color = "blue";
+        element.className = "merger";
+
+        
+        let container = document.getElementById('target');
+        container.insertBefore(element, container.firstChild);
+    }
+
+    function remove() {
+        let mergerItems = document.getElementsByClassName("merger");
+
+        let length = mergerItems.length;
+        let middleIndex = Math.floor(length / 2);
+        if (length > 0) {
+            
+            mergerItems[middleIndex].remove();
+        }
+    }
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+<!-- function swapElements() {
+    let mergerItems = document.getElementsByClassName("merger");
+    let length = mergerItems.length;
+
+    if (length >= 2) {
+        let index1 = Math.floor(Math.random() * length);
+        let index2 = Math.floor(Math.random() * length);
+        while (index1 === index2) {
+            index2 = Math.floor(Math.random() * length);
+        }
+        let element1 = mergerItems[index1];
+        let element2 = mergerItems[index2];
+<button onclick="swapElements()">Swap</button>
+        let container = document.getElementById('target');
+        let nextElementAfterElement2 = element2.nextElementSibling;
+        container.insertBefore(element2, element1);
+        container.insertBefore(element1, nextElementAfterElement2);
+    } -->
