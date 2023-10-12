@@ -42,6 +42,9 @@
     <p id="click" onclick="showHelp()">Click for help</p>
 
     <div id="help" style="color:brown;font-family: Georgia, 'Times New Roman', Times, serif;">Help report</div>
+
+    <p id="Bonusgame" onclick="newGame()">Bonus Game</p>
+
     <div class="container">
         <div><img src="location.jpg" id="location00" onclick="check(0)" alt="location"></div>
         <div><img src="location.jpg" id="location01" onclick="check(1)" alt="location"></div>
@@ -141,36 +144,29 @@
         }
 
 
+        function newGame() {
+            checkCount = 0;
+            penalty = 0;
+            lastCheck = 0;
+            gameOver = false;
+
+            treasureLocation = Math.floor(Math.random() * 25);
+            do {
+                trapLocation = Math.floor(Math.random() * 25);
+            } while (trapLocation === treasureLocation);
+
+            document.getElementById("locations").textContent = "Number of locations checked is : " + checkCount;
+            document.getElementById("penalty").textContent = "Penalty is : " + penalty;
+            document.getElementById("help").textContent = "Help report";
+
+            for (var i = 0; i < 25; i++) {
+                document.getElementById(ids[i]).src = "location.jpg"
+            }
+        }
+
+
     </script>
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<!-- 
-function newGame() {
-    checkCount = 0;
-    penalty = 0;
-    lastCheck = 0;
-    gameOver = false;
-
-    treasureLocation = Math.floor(Math.random() * 25);
-    do {
-        trapLocation = Math.floor(Math.random() * 25);
-    } while (trapLocation === treasureLocation);
-
-    document.getElementById("locations").textContent = "Number of locations checked is : " + checkCount;
-    document.getElementById("penalty").textContent = "Penalty is : " + penalty;
-    document.getElementById("help").textContent = "Help report";
-
-    for (var i = 0; i < 25; i++) {
-        document.getElementById(ids[i]).src = "LocationImage.jpg"
-    }
-} -->
