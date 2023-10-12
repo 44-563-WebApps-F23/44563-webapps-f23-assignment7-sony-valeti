@@ -21,6 +21,7 @@
 
     <button type="button" onclick="startTime()">Start Timer</button>
     <button type="button" onclick="recordTime()">React</button>
+    <button type="button" onclick="randomStart()">Random Start</button>
     <script>
         let reactTime = undefined
         function recordTime() {
@@ -45,6 +46,11 @@
                 }
             }, 8000)
         }
+
+        function randomStart(){
+        startCount = Math.floor(Math.random()*(10-2+1)+2)
+        startTime()
+    }
     </script>
 
 </body>
